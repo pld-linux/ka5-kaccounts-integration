@@ -1,18 +1,19 @@
-%define		kdeappsver	18.12.1
+%define		kdeappsver	19.04.1
+%define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kaccounts-integration
 Summary:	Kaccounts integration
 Name:		ka5-%{kaname}
-Version:	18.12.1
+Version:	19.04.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	1d93ef2d156d21b0638ae91fe7b1aab6
+# Source0-md5:	f84ceb2e150b579c7e7a6ae238f0d69e
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
-BuildRequires:	kf5-extra-cmake-modules >= 5.53.0
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	libaccounts-glib-devel >= 1.21
 BuildRequires:	libaccounts-qt5-devel >= 1.13
 BuildRequires:	libsignon-qt5-devel >= 8.55
@@ -48,6 +49,7 @@ install -d build
 cd build
 %cmake \
 	-G Ninja \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 	..
 %ninja_build
