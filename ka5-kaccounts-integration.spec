@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kaccounts-integration
 Summary:	Kaccounts integration
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f84ceb2e150b579c7e7a6ae238f0d69e
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	c171201ac211a948b09bc17da78fc3ee
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -68,15 +68,28 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %ghost %{_libdir}/libkaccounts.so.1
 %attr(755,root,root) %{_libdir}/libkaccounts.so.*.*.*
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcm_kaccounts.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kded/accounts.so
 %dir %{_libdir}/qt5/qml/org/kde/kaccounts
 %attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kaccounts/libkaccountsdeclarativeplugin.so
 %{_libdir}/qt5/qml/org/kde/kaccounts/qmldir
 %{_datadir}/kservices5/kcm_kaccounts.desktop
-#%%{_datadir}/kservices5/kded/accounts.desktop
+%dir %{_datadir}/kpackage/kcms/kcm_kaccounts
+%dir %{_datadir}/kpackage/kcms/kcm_kaccounts/contents
+%dir %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/Accounts.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/AvailableAccounts.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/metadata.desktop
+%{_datadir}/kpackage/kcms/kcm_kaccounts/metadata.json
+%attr(755,root,root) %ghost %{_libdir}/libkaccounts.so.2
+%dir %{_libdir}/qt5/plugins/kaccounts
+%dir %{_libdir}/qt5/plugins/kaccounts/daemonplugins
+%attr(755,root,root) %{_libdir}/qt5/plugins/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kcms/kcm_kaccounts.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kded/kded_accounts.so
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/AccountDetails.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/MessageBoxSheet.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/RemoveAccountDialog.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/RenameAccountDialog.qml
 
 %files devel
 %defattr(644,root,root,755)
