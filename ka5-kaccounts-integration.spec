@@ -5,7 +5,7 @@
 Summary:	Kaccounts integration
 Name:		ka5-%{kaname}
 Version:	20.12.3
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -14,6 +14,7 @@ URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kf5-kcmutils-devel >= %{kframever}
 BuildRequires:	libaccounts-glib-devel >= 1.21
 BuildRequires:	libaccounts-qt5-devel >= 1.13
 BuildRequires:	libsignon-qt5-devel >= 8.55
