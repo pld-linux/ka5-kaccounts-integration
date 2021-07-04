@@ -30,6 +30,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Administer web accounts for the sites and services across the Plasma
 desktop.
 
+%description -l pl.UTF-8
+Zarządzaj kontami internetowymi w środowisku Plazmy.
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
