@@ -20,6 +20,7 @@ BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	kf5-kcmutils-devel >= %{kframever}
 BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
 BuildRequires:	kf5-kdeclarative-devel >= %{kframever}
+BuildRequires:	kf5-kwallet-devel >= %{kframever}
 BuildRequires:	libaccounts-glib-devel >= 1.21
 BuildRequires:	libaccounts-qt5-devel >= 1.13
 BuildRequires:	libsignon-qt5-devel >= 8.55
