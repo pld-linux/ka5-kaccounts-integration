@@ -20,6 +20,7 @@ BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	kf5-kcmutils-devel >= %{kframever}
 BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
 BuildRequires:	kf5-kdeclarative-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
 BuildRequires:	kf5-kio-devel >= %{kframever}
 BuildRequires:	kf5-kservice-devel >= %{kframever}
 BuildRequires:	kf5-kwallet-devel >= %{kframever}
