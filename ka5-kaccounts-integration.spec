@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.08.3
+%define		kdeappsver	22.12.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kaccounts-integration
 Summary:	Kaccounts integration
 Name:		ka5-%{kaname}
-Version:	22.08.3
+Version:	22.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	4cce2c1a993186980f6c9de80a031450
+# Source0-md5:	6c7241f17d6f08f85addd66d8fe09955
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -91,24 +91,21 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/qt5/qml/org/kde/kaccounts
 %attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kaccounts/libkaccountsdeclarativeplugin.so
 %{_libdir}/qt5/qml/org/kde/kaccounts/qmldir
-%{_datadir}/kservices5/kcm_kaccounts.desktop
 %dir %{_datadir}/kpackage/kcms/kcm_kaccounts
 %dir %{_datadir}/kpackage/kcms/kcm_kaccounts/contents
 %dir %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui
-%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/Accounts.qml
 %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/AvailableAccounts.qml
-%{_datadir}/kpackage/kcms/kcm_kaccounts/metadata.desktop
-%{_datadir}/kpackage/kcms/kcm_kaccounts/metadata.json
 %ghost %{_libdir}/libkaccounts.so.2
 %dir %{_libdir}/qt5/plugins/kaccounts
 %dir %{_libdir}/qt5/plugins/kaccounts/daemonplugins
-%attr(755,root,root) %{_libdir}/qt5/plugins/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kcms/kcm_kaccounts.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kf5/kded/kded_accounts.so
+%{_libdir}/qt5/plugins/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so
+%{_libdir}/qt5/plugins/kf5/kded/kded_accounts.so
 %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/AccountDetails.qml
 %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/MessageBoxSheet.qml
 %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/RemoveAccountDialog.qml
 %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/RenameAccountDialog.qml
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_kaccounts.so
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/main.qml
 
 %files devel
 %defattr(644,root,root,755)
