@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kaccounts-integration
 Summary:	Kaccounts integration
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	2
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	1d32f8f4d7a036d5bbcd932c019af710
+# Source0-md5:	5aa2562cd93d65a5819e5d974817ba77
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
@@ -28,6 +28,7 @@ BuildRequires:	libaccounts-glib-devel >= 1.21
 BuildRequires:	libaccounts-qt5-devel >= 1.13
 BuildRequires:	libsignon-qt5-devel >= 8.55
 BuildRequires:	ninja
+BuildRequires:	qcoro-devel
 BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
@@ -106,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/RenameAccountDialog.qml
 %{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_kaccounts.so
 %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/main.qml
+%{_desktopdir}/kcm_kaccounts.desktop
 
 %files devel
 %defattr(644,root,root,755)
