@@ -1,35 +1,35 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.01.95
+%define		kdeappsver	23.08.4
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kaccounts-integration
 Summary:	Kaccounts integration
 Name:		ka5-%{kaname}
-Version:	24.01.95
-Release:	0.1
+Version:	23.08.4
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a93486ef40b24a8599081503dbe0de17
+Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	0662519937e19d639a34e68378354035
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
-BuildRequires:	kf6-extra-cmake-modules >= %{kframever}
-BuildRequires:	kf6-kcmutils-devel >= %{kframever}
-BuildRequires:	kf6-kdbusaddons-devel >= %{kframever}
-BuildRequires:	kf6-kdeclarative-devel >= %{kframever}
-BuildRequires:	kf6-ki18n-devel >= %{kframever}
-BuildRequires:	kf6-kio-devel >= %{kframever}
-BuildRequires:	kf6-kservice-devel >= %{kframever}
-BuildRequires:	kf6-kwallet-devel >= %{kframever}
+BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
+BuildRequires:	kf5-kcmutils-devel >= %{kframever}
+BuildRequires:	kf5-kdbusaddons-devel >= %{kframever}
+BuildRequires:	kf5-kdeclarative-devel >= %{kframever}
+BuildRequires:	kf5-ki18n-devel >= %{kframever}
+BuildRequires:	kf5-kio-devel >= %{kframever}
+BuildRequires:	kf5-kservice-devel >= %{kframever}
+BuildRequires:	kf5-kwallet-devel >= %{kframever}
 BuildRequires:	libaccounts-glib-devel >= 1.21
-BuildRequires:	libaccounts-qt6-devel >= 1.13
-BuildRequires:	libsignon-qt6-devel >= 8.55
+BuildRequires:	libaccounts-qt5-devel >= 1.13
+BuildRequires:	libsignon-qt5-devel >= 8.55
 BuildRequires:	ninja
-BuildRequires:	qcoro-qt6-devel
-BuildRequires:	qt6-build >= %{qtver}
+BuildRequires:	qcoro-devel
+BuildRequires:	qt5-build >= %{qtver}
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
@@ -86,22 +86,29 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%dir %{_libdir}/qt6/qml/org/kde/kaccounts
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/kaccounts/libkaccountsdeclarativeplugin.so
-%{_libdir}/qt6/qml/org/kde/kaccounts/qmldir
-%dir %{_libdir}/qt6/plugins/kaccounts
-%dir %{_libdir}/qt6/plugins/kaccounts/daemonplugins
-%attr(755,root,root) %{_libdir}/qt6/plugins/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/plasma/kcms/systemsettings/kcm_kaccounts.so
+%attr(755,root,root) %{_libdir}/libkaccounts.so.*.*.*
+%dir %{_libdir}/qt5/qml/org/kde/kaccounts
+%attr(755,root,root) %{_libdir}/qt5/qml/org/kde/kaccounts/libkaccountsdeclarativeplugin.so
+%{_libdir}/qt5/qml/org/kde/kaccounts/qmldir
+%dir %{_datadir}/kpackage/kcms/kcm_kaccounts
+%dir %{_datadir}/kpackage/kcms/kcm_kaccounts/contents
+%dir %{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/AvailableAccounts.qml
+%ghost %{_libdir}/libkaccounts.so.2
+%dir %{_libdir}/qt5/plugins/kaccounts
+%dir %{_libdir}/qt5/plugins/kaccounts/daemonplugins
+%{_libdir}/qt5/plugins/kaccounts/daemonplugins/kaccounts_kio_webdav_plugin.so
+%{_libdir}/qt5/plugins/kf5/kded/kded_accounts.so
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/AccountDetails.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/MessageBoxSheet.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/RemoveAccountDialog.qml
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/RenameAccountDialog.qml
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_kaccounts.so
+%{_datadir}/kpackage/kcms/kcm_kaccounts/contents/ui/main.qml
 %{_desktopdir}/kcm_kaccounts.desktop
-%ghost %{_libdir}/libkaccounts6.so.2
-%attr(755,root,root) %{_libdir}/libkaccounts6.so.*.*
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kded/kded_accounts.so
-%{_libdir}/qt6/qml/org/kde/kaccounts/kaccountsdeclarativeplugin.qmltypes
-%{_libdir}/qt6/qml/org/kde/kaccounts/kde-qmlmodule.version
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KAccounts6
-%{_libdir}/cmake/KAccounts6
-%{_libdir}/libkaccounts6.so
+%{_includedir}/KAccounts
+%{_libdir}/cmake/KAccounts
+%{_libdir}/libkaccounts.so
